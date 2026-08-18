@@ -26,7 +26,7 @@ public class InMemoryEstoqueService implements IEstoqueService {
     public boolean reservar(Pedido pedido) {
         return false;
     }
-    
+
     @Override
     public void liberar(Pedido pedido) {
 
