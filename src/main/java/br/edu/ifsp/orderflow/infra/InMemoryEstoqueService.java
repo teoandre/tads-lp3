@@ -12,6 +12,8 @@ public class InMemoryEstoqueService implements IEstoqueService {
 
     private final Map<String, Integer> estoque = new HashMap<>(); // estrutura de dados que armazena por meio de chave (string) e valor (Integer)
 
+
+
     @Override
     public void adicionarEstoque(Produto produto, int quantidade) {
         int qtdAtual = this.estoque.getOrDefault(produto.getId(),0);
@@ -22,6 +24,14 @@ public class InMemoryEstoqueService implements IEstoqueService {
     @Override
     public int quantidadeDisponivel(Produto produto) {
         return this.estoque.getOrDefault(produto.getId(), 0);
+    }
+
+    private void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch(InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     @Override
@@ -36,6 +46,8 @@ public class InMemoryEstoqueService implements IEstoqueService {
                 return false;
             }
         }
+
+        this.sleep(50);
 
         /*
         List<ItemPedido> itens = pedido.getItens();
